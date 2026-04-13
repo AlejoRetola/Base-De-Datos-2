@@ -4,9 +4,9 @@ package unlp.info.bd2.model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+@Entity
 public class TourGuideUser extends User {
-
+    @Column(name = "education", nullable = false)
     private String education;
 
     private List<Route> routes;

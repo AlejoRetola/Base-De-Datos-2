@@ -2,15 +2,16 @@ package unlp.info.bd2.model;
 
 import java.util.Date;
 import java.util.List;
-
+@Entity
 public class Purchase {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-
+    @Column(name = "code", nullable = false, unique=true)
     private String code;
-
+    @Column(name = "totalPrice", nullable = false)
     private float totalPrice;
-
+    @Column(name = "date", nullable = false)
     private Date date;
 
     private User user;
@@ -18,7 +19,7 @@ public class Purchase {
     private Route route;
 
     private Review review;
-
+    @OneToMany(mappedBy = "purchase")
     private List<ItemService> itemServiceList;
 
 

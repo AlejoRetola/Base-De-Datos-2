@@ -2,13 +2,17 @@ package unlp.info.bd2.model;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Entity
 public class Service {
-
+    @ID
+    @NotNull
     private Long id;
 
+    @NotNull
+    @Column (unique = true)
+    @Size(max=100, message= "El nombre como maximo puede tener 100 characters")
     private String name;
-
+    @NotNull
     private float price;
 
     private String description;

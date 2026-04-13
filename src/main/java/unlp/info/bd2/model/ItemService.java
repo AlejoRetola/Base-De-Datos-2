@@ -1,14 +1,17 @@
 package unlp.info.bd2.model;
 
-
+@Entity
 public class ItemService {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     Long id;
-
+    @Column(name = "quantity", nullable = false)
     private int quantity;
-
+    @ManyToOne
+    @JoinColumn(name = "purchase_id")
     private Purchase purchase;
-
+    @ManyToOne
+    @JoinColumn(name = "service_id")
     private Service service;
 
     public Long getId() {

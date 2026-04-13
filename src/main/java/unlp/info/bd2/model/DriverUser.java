@@ -2,9 +2,9 @@ package unlp.info.bd2.model;
 
 
 import java.util.List;
-
+@Entity
 public class DriverUser extends User {
-
+    @Column(name = expediente, nullable = false)
     private String expedient;
 
     private List<Route> routes;

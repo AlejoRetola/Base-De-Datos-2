@@ -3,25 +3,27 @@ package unlp.info.bd2.model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+@Entity
 public class User {
+    @ID
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long id;
-
+    @Column(name = "userName",unique=true, nullable = false)
     private String username;
-
+    @Column(name = "password", nullable = false)
     private String password;
-
+    @Column(name = "name")
     private String name;
-
+    @Column(name = "email",unique=true, nullable = false)
     private String email;
-
+    @Column(name = "birthday",unique=true, nullable = false)
     private Date birthdate;
-
+    @Column(name = "phoneNumber",unique=true, nullable = false)
     private String phoneNumber;
-
+    @Column(name = "isActive")
     private boolean active;
-
+    @OneToMany
     private List<Purchase> purchaseList;
 
 

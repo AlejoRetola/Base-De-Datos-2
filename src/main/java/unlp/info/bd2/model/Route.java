@@ -2,17 +2,17 @@ package unlp.info.bd2.model;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Entity
 public class Route {
-
+    @ID
     private Long id;
-
+    @Column(name = "name", nullable = false)
     private String name;
-
+    @Column(name = "price", nullable = false)
     private float price;
-
+    @Column(name = "totalKM", nullable = false)
     private float totalKm;
-
+    @Column(name = "maxNumberUsers", nullable = false)
     private int maxNumberUsers;
 
     private List<Stop> stops;

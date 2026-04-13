@@ -1,14 +1,16 @@
 package unlp.info.bd2.model;
 
-
+@Entity
 public class Review {
+    @ID
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long id;
-
+    @Column(name = "rating", nullable = false)
     private int rating;
-
+    @Column(name = "comment", nullable = false)
     private String comment;
-
+    @Column(name = "purchase", nullable = false)
     private Purchase purchase;
 
 

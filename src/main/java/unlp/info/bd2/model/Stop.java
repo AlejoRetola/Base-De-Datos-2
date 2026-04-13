@@ -1,12 +1,12 @@
 package unlp.info.bd2.model;
 
-
+@Entity
 public class Stop {
-
+    @ID
     private Long id;
-
+    @Column(name = "name", nullable = false)
     private String name;
-
+    @Column(name = "Desc", nullable = true, length= 500)
     private String description;
 
 

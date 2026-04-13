@@ -1,13 +1,13 @@
 package unlp.info.bd2.model;
 
 import java.util.List;
-
+@Entity
 public class Supplier {
-
+    @ID
     private Long id;
-
+    @Column(name = "businessName", nullable = false, unique=true)
     private String businessName;
-
+    @Column(name = "authorizationNumber", nullable = false, unique=true)
     private String authorizationNumber;
 
     private List<Service> services;
