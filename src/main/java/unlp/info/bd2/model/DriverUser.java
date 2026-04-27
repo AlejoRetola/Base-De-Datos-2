@@ -8,6 +8,7 @@ import jakarta.persistence.ManyToOne;
 
 import java.util.List;
 @Entity
+@DiscriminatorValue(value = "Driver")
 public class DriverUser extends User {
     @Column(name = expediente, nullable = false)
     private String expedient;
