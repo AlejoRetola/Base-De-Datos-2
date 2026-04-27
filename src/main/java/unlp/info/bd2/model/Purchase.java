@@ -1,25 +1,29 @@
 package unlp.info.bd2.model;
 
+import jakarta.persistence.*;
+
 import java.util.Date;
 import java.util.List;
 @Entity
 public class Purchase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private Long id;
     @Column(name = "code", nullable = false, unique=true)
     private String code;
     @Column(name = "totalPrice", nullable = false)
     private float totalPrice;
     @Column(name = "date", nullable = false)
     private Date date;
-
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
-
+    @ManyToOne
+    @JoinColumn(name = "route_id" , nullable = false)
     private Route route;
-
+    @OneToOne(mappedBy = "purchase" , cascade = {CascadeType.MERGE, CascadeType.REMOVE, CascadeType.PERSIST} , orphanRemoval = true) // Supongo que es necesario por si se permite borrar reseñas
     private Review review;
-    @OneToMany(mappedBy = "purchase")
+    @OneToMany(mappedBy = "purchase" , cascade = {CascadeType.MERGE, CascadeType.REMOVE, CascadeType.PERSIST} , orphanRemoval = true)
     private List<ItemService> itemServiceList;
 
 

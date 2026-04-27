@@ -1,10 +1,13 @@
 package unlp.info.bd2.model;
 
+import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 @Entity
 public class Route {
-    @ID
+    @Id
+    @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "name", nullable = false)
     private String name;
@@ -15,10 +18,11 @@ public class Route {
     @Column(name = "maxNumberUsers", nullable = false)
     private int maxNumberUsers;
 
+    @OneToMany(mappedBy = "route", cascade = CascadeType.ALL, orphanRemoval = true) // el refresh y el detach estan de mas
     private List<Stop> stops;
-
+    @ManyToMany
     private List<DriverUser> driverList;
-
+    @ManyToMany
     private List<TourGuideUser> tourGuideList;
 
     public Long getId() {

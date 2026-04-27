@@ -1,13 +1,15 @@
 package unlp.info.bd2.model;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Id;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 @Entity
 public class User {
-    @ID
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
     @Column(name = "userName",unique=true, nullable = false)
     private String username;
@@ -23,8 +25,8 @@ public class User {
     private String phoneNumber;
     @Column(name = "isActive")
     private boolean active;
-    @OneToMany
-    private List<Purchase> purchaseList;
+    @OneToMany(mappedBy="user" , cascade = {CascadeType.MERGE,  CascadeType.PERSIST}) // "Es "USER" o "USER_ID"? El nombre de la columna o el nombre de el atributo? => Geminis me dijo que es el atributo ya que el ORM trata con java objects xd
+    private List<Purchase> purchaseList; // sin el remove, ya que segun geminis pierdo datos, y tiene razón, te quedaste sin data de ventas
 
 
     public Long getId() {

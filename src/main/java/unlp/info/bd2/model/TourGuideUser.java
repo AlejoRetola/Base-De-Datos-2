@@ -1,6 +1,10 @@
 package unlp.info.bd2.model;
 
 
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,7 +12,7 @@ import java.util.List;
 public class TourGuideUser extends User {
     @Column(name = "education", nullable = false)
     private String education;
-
+    @ManyToMany(mappedBy = "tourGuideList")
     private List<Route> routes;
 
 

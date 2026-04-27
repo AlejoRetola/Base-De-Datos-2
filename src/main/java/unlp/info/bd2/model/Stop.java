@@ -1,14 +1,21 @@
 package unlp.info.bd2.model;
 
+import jakarta.persistence.*;
+
 @Entity
 public class Stop {
-    @ID
+    @Id
+    @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "name", nullable = false)
     private String name;
     @Column(name = "Desc", nullable = true, length= 500)
     private String description;
 
+    //ACA AGREGO EL ROUTE PORQUE NO HAY NADA, OQUE HAGO AAAAAAAAAAAAAAAA
+    @ManyToOne
+    @JoinColumn( name = "route_id")
+    private Route route;
 
     public Long getId() {
         return id;

@@ -1,15 +1,18 @@
 package unlp.info.bd2.model;
 
+import jakarta.persistence.*;
+
 import java.util.List;
 @Entity
 public class Supplier {
-    @ID
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "businessName", nullable = false, unique=true)
     private String businessName;
     @Column(name = "authorizationNumber", nullable = false, unique=true)
     private String authorizationNumber;
-
+    @OneToMany(mappedBy = "supplier" , cascade = {CascadeType.MERGE,  CascadeType.PERSIST})
     private List<Service> services;
 
     public Long getId() {

@@ -4,7 +4,7 @@ package unlp.info.bd2.model;
 public class ItemService {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    Long id;
+    private Long id;
     @Column(name = "quantity", nullable = false)
     private int quantity;
     @ManyToOne

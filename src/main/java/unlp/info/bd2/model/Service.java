@@ -1,24 +1,24 @@
 package unlp.info.bd2.model;
 
+import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 @Entity
 public class Service {
-    @ID
-    @NotNull
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @NotNull
-    @Column (unique = true)
-    @Size(max=100, message= "El nombre como maximo puede tener 100 characters")
+    @Column(name = "name", nullable = false, length = 100, unique = true)
     private String name;
-    @NotNull
+    @Column(name ="price", nullable = true)
     private float price;
-
+    @Column(name = "description", nullable = false, length = 256)
     private String description;
-
+    @OneToMany(mappedBy = "service")
     private List<ItemService> itemServiceList;
-
+    @ManyToOne
+    @JoinColumn(name = "supplier_id")
     private Supplier supplier;
 
 
