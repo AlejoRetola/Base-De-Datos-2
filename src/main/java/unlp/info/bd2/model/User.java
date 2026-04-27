@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 @Entity
+@DiscriminatorColumn(name="tipo")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
